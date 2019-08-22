@@ -1,0 +1,16 @@
+# Readme
+## CNN Training and Its Application to the MNIST Dataset
+
+(b)Train LeNet-5 on MNIST Dataset
+
+1.Open terminal
+
+2.input
+python cnn5.py
+
+(c)Apply trained network to negative images 
+
+1.Open terminal
+
+2.input
+python negativeMNIST.py

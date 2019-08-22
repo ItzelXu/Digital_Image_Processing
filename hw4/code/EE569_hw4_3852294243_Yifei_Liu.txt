@@ -1,0 +1,845 @@
+//(1) Name: Yifei Liu
+//(2) USC ID Number: 3852294243 
+//(3) USC Email: liu534@usc.edu
+//(4) Submission Date: 3/3/2019
+
+#include <stdio.h>
+#include <iostream>
+#include <stdlib.h>
+#include <cmath>
+#include <queue>
+//#include <opencv2/opencv.hpp>
+//#include <opencv2/highgui.hpp>
+//#include <opencv2/ml/ml.hpp> 
+
+using namespace std;
+
+int convert(float num){
+
+	if(num > 255){
+		num = 255;
+	}
+
+	if(num < 0){
+		num = 0;
+	}
+	return num;
+}
+
+
+int main(int argc, char *argv[])
+
+{
+	// Define file pointer and variables
+	FILE *file;
+	int BytesPerPixel;
+	//int Size = 256;
+	int Row;
+	int Column;
+
+	
+	// Check for proper syntax
+	if (argc < 4){
+		cout << "Syntax Error - Incorrect Parameter Usage:" << endl;
+		cout << "program_name input_image.raw ori_image.raw output_image.raw [BytesPerPixel = 1] [Row = 256] [Column = 256]" << endl;
+		//cout << "program_name 1.input_image.raw 2.ori_image.raw 3.output_image.raw 4.[BytesPerPixel = 1] 5.[Row = 256] 6.[Column = 256]" << endl;
+
+		return 0;
+	}
+	
+	// Check if image is grayscale or color
+	if (argc < 3){
+		BytesPerPixel = 1; // default is grey image
+	} 
+	else {
+		BytesPerPixel = atoi(argv[3]);
+		// Check if size is specified
+		if (argc >= 3){
+//			Size = atoi(argv[4]);
+			//BytesPerPixel = atoi(argv[3]);
+			Row = atoi(argv[4]);
+			Column = atoi(argv[5]);
+		}
+	}
+	cout << "Row and Column: " << Row << " and " << Column <<endl;
+	cout << "Bytebypixels: " << BytesPerPixel <<endl;
+	
+	// Allocate image data array
+	unsigned char Imagedata[Row][Column][BytesPerPixel];
+
+
+
+	// Read image (filename specified by first argument) into image data matrix
+	if (!(file=fopen(argv[1],"rb"))) {
+		cout << "Cannot open file: " << argv[1] <<endl;
+		exit(1);
+	}
+	fread(Imagedata, sizeof(unsigned char), Row*Column*BytesPerPixel, file);
+	fclose(file);
+	cout << "Target Image read succeed!" <<endl;
+
+
+	////////////////////////// END CODE ////////////////////////////////////////////////
+
+	//1. Expand the image matrix.
+
+	cout << "1. Expand the image matrix." <<endl;
+	int N = 5; //Window size
+
+
+	double Imagedata_Expassion[Row + N - 1][Column + N - 1][BytesPerPixel];
+
+	//fill inside
+
+	for (int k = 0; k < BytesPerPixel; k++){
+
+		for (int i = (N - 1)/2; i < Row + (N - 1)/2; i++){
+			for (int j = (N - 1)/2; j < Column + (N - 1)/2; j++){
+
+				Imagedata_Expassion[i][j][k] = Imagedata[i - (N - 1)/2][j - (N - 1)/2][k];
+			}
+		}
+	}
+	cout << "Fill inside succeed!" <<endl;
+
+	//fill the expended column.
+
+	for (int k = 0; k < BytesPerPixel; k++){
+
+		for (int i = (N - 1)/2; i < Row + (N - 1)/2; i++){
+			for (int j = 0; j < (N - 1)/2 ; j++){
+
+				Imagedata_Expassion[i][j][k] = Imagedata_Expassion[i][N - 1 - j][k];
+
+			}
+			for (int j = (N - 1)/2 + Column; j < N - 1 + Column; j++){
+
+				Imagedata_Expassion[i][j][k] = Imagedata_Expassion[i][N - 3 + 2 * Column - j][k];
+			}
+		}
+	}
+	cout << "Fill the expended column succeed!" <<endl;
+	//fill the expeneded row.
+
+	for(int k = 0; k < BytesPerPixel; k++){
+
+		for (int i = 0; i < (N - 1)/2 ; i++){
+			for(int j = 0; j < Column + N - 1; j++){
+
+				Imagedata_Expassion[i][j][k] = Imagedata_Expassion[N - 1 - i][j][k];
+			}
+		}
+
+		for (int i = (N - 1)/2 + Row; i < N - 1 + Row; i++){
+			for(int j = 0; j < Column + N - 1; j++){
+
+				Imagedata_Expassion[i][j][k] = Imagedata_Expassion[N - 3 + 2 * Row - i][j][k];
+			}
+		}
+	}
+
+
+
+	cout << "Fill the expended row succeed!" <<endl;
+	
+	//prepare
+	double image_sum = 0.0;
+	for (int i = 0; i < Row + N - 1; i++){
+		for (int j = 0; j < Column + N - 1; j++){
+			Imagedata_Expassion[i][j][0] = Imagedata_Expassion[i][j][0] / 255;
+			image_sum += Imagedata_Expassion[i][j][0];
+		}
+	}
+	double image_mean = image_sum / ((Row + N - 1) * (Column + N - 1));
+	cout << "image_mean: " << image_mean << endl;
+	
+	for (int i = 0; i < Row + N - 1; i++){
+		for (int j = 0; j < Column + N - 1; j++){
+			Imagedata_Expassion[i][j][0] = Imagedata_Expassion[i][j][0] - image_mean;
+		}
+	}
+
+	
+	
+	//Law's filters
+	
+//	int L[5] = [ 1, 4,6, 4, 1];
+//	int E[5] = [-1,-2,0, 2, 1];
+//	int S[5] = [-1, 0,2, 0,-1];
+//	int W[5] = [-1, 2,0,-2, 1];
+//	int R[5] = [ 1,-4,6,-4, 1];
+	int current[5][5] = {0};
+	double Imagedata_filted[Row][Column][1];
+//	double sum = {0.0};
+	double square_sum[25] = {0.0};
+	int num = 0;
+//	double sum = 0;
+	double mean;
+	int Laws[5][5] = {{ 1, 4,6, 4, 1},{-1,-2,0, 2, 1},{-1, 0,2, 0,-1},{-1, 2,0,-2, 1},{ 1,-4,6,-4, 1}};
+	for(int a = 0; a < N; a++){
+		for(int b = 0; b < N; b++){
+			for (int k = 0; k < N; k++){
+				for (int l = 0; l < N; l++){
+				current[k][l] = Laws[a][k] * Laws[b][l];
+				cout << current[k][l] << "\t";
+				}
+				cout << "\n";
+			}
+			cout << "\n";
+//			sum = 0.0;
+			for (int i = (N - 1)/2; i < Row + (N - 1)/2; i++){
+				for(int j = (N - 1)/2; j < Column + (N - 1)/2; j++){
+//					Imagedata_filted[i - (N - 1)/2][j - (N - 1)/2][0] = 0;
+					double temp = 0;
+					for (int m = 0; m < N; m++){
+						for(int n = 0; n < N; n++){
+//							cout << current[m][n] << endl;
+//							cout << Imagedata_Expassion[i - (N - 1)/2 + m][j - (N - 1)/2 + n][0] << endl;
+							temp += Imagedata_Expassion[i - (N - 1)/2 + m][j - (N - 1)/2 + n][0] * current[m][n];
+//							cout << temp << endl;
+						}
+					}
+					Imagedata_filted[i - (N - 1)/2][j - (N - 1)/2][0] = temp;
+//					cout << i  - (N - 1)/2 << ", " << j - (N - 1)/2 << ": " << Imagedata_filted[i - (N - 1)/2][j - (N - 1)/2][0] <<endl;
+//					sum += abs(temp);
+					square_sum[num] += Imagedata_filted[i - (N - 1)/2][j - (N - 1)/2][0] * Imagedata_filted[i - (N - 1)/2][j - (N - 1)/2][0];
+					
+				}
+			}
+
+
+			cout << "square sum: " << square_sum[num]<<endl;
+//			cout << count <<endl;
+			num = num + 1;
+		}
+	}
+	
+//	normalize vector
+//	double sum_sum;
+//	for(int i = 0; i < 25; i++){
+//		sum_sum += sum[i];
+//	}
+//	int mean = sum_sum / (Row * Column)
+	
+	for(int i = 0; i < 25; i++){
+		square_sum[i] = sqrt(square_sum[i] / (Row * Column));
+		cout<<square_sum[i]<<endl;
+	}
+	
+	// functions for output array to be plot
+	FILE *data_f = fopen("square_sum_2.txt", "w");
+	if (data_f == NULL)
+	{
+		printf("Error opening file!\n");
+		exit(1);
+	}
+	for (int i = 0;i < 25; i++) {
+		fprintf(data_f, "%f\n", square_sum[i]);
+	}
+	fclose(data_f);
+	
+
+	// Write image data (filename specified by second argument) from image data matrix
+
+	if (!(file=fopen(argv[2],"wb"))) {
+		cout << "Cannot open file: " << argv[5] << endl;
+		exit(1);
+	}
+	fwrite(Imagedata_filted, sizeof(unsigned char), (Row)*(Column)*1, file);
+	fclose(file);
+
+	return 0;
+}
+
+//(1) Name: Yifei Liu
+//(2) USC ID Number: 3852294243 
+//(3) USC Email: liu534@usc.edu
+//(4) Submission Date: 3/19/2019
+
+#include <stdio.h>
+#include <iostream>
+#include <stdlib.h>
+#include <cmath>
+#include <queue>
+//#include <opencv2/opencv.hpp>
+//#include <opencv2/highgui.hpp>
+//#include <opencv2/ml/ml.hpp> 
+
+using namespace std;
+float Imagedata_filted[510][510][25];
+float Imagedata_energy[510][510][25];
+
+int convert(float num){
+
+	if(num > 255){
+		num = 255;
+	}
+
+	if(num < 0){
+		num = 0;
+	}
+	return num;
+}
+
+
+int main(int argc, char *argv[])
+
+{
+	// Define file pointer and variables
+	FILE *file;
+	int BytesPerPixel;
+	//int Size = 256;
+	int Row;
+	int Column;
+
+	
+	// Check for proper syntax
+	if (argc < 4){
+		cout << "Syntax Error - Incorrect Parameter Usage:" << endl;
+		cout << "program_name input_image.raw ori_image.raw output_image.raw [BytesPerPixel = 1] [Row = 256] [Column = 256]" << endl;
+		//cout << "program_name 1.input_image.raw 2.ori_image.raw 3.output_image.raw 4.[BytesPerPixel = 1] 5.[Row = 256] 6.[Column = 256]" << endl;
+
+		return 0;
+	}
+	
+	// Check if image is grayscale or color
+	if (argc < 3){
+		BytesPerPixel = 1; // default is grey image
+	} 
+	else {
+		BytesPerPixel = atoi(argv[3]);
+		// Check if size is specified
+		if (argc >= 3){
+//			Size = atoi(argv[4]);
+			//BytesPerPixel = atoi(argv[3]);
+			Row = atoi(argv[4]);
+			Column = atoi(argv[5]);
+		}
+	}
+	cout << "Row and Column: " << Row << " and " << Column <<endl;
+	cout << "Bytebypixels: " << BytesPerPixel <<endl;
+	
+	// Allocate image data array
+	unsigned char Imagedata[Row][Column][BytesPerPixel];
+
+
+
+	// Read image (filename specified by first argument) into image data matrix
+	if (!(file=fopen(argv[1],"rb"))) {
+		cout << "Cannot open file: " << argv[1] <<endl;
+		exit(1);
+	}
+	fread(Imagedata, sizeof(unsigned char), Row*Column*BytesPerPixel, file);
+	fclose(file);
+	cout << "Target Image read succeed!" <<endl;
+
+
+	////////////////////////// END CODE ////////////////////////////////////////////////
+
+	//1. Expand the image matrix.
+
+	cout << "1. Expand the image matrix." <<endl;
+	int N = 5; //Window size
+	int M = 20;
+
+
+	double Imagedata_Expassion[Row + N - 1][Column + N - 1][BytesPerPixel];
+
+	//fill inside
+
+	for (int k = 0; k < BytesPerPixel; k++){
+
+		for (int i = (N - 1)/2; i < Row + (N - 1)/2; i++){
+			for (int j = (N - 1)/2; j < Column + (N - 1)/2; j++){
+
+				Imagedata_Expassion[i][j][k] = Imagedata[i - (N - 1)/2][j - (N - 1)/2][k];
+			}
+		}
+	}
+	cout << "Fill inside succeed!" <<endl;
+
+	//fill the expended column.
+
+	for (int k = 0; k < BytesPerPixel; k++){
+
+		for (int i = (N - 1)/2; i < Row + (N - 1)/2; i++){
+			for (int j = 0; j < (N - 1)/2 ; j++){
+
+				Imagedata_Expassion[i][j][k] = Imagedata_Expassion[i][N - 1 - j][k];
+
+			}
+			for (int j = (N - 1)/2 + Column; j < N - 1 + Column; j++){
+
+				Imagedata_Expassion[i][j][k] = Imagedata_Expassion[i][N - 3 + 2 * Column - j][k];
+			}
+		}
+	}
+	cout << "Fill the expended column succeed!" <<endl;
+	//fill the expeneded row.
+
+	for(int k = 0; k < BytesPerPixel; k++){
+
+		for (int i = 0; i < (N - 1)/2 ; i++){
+			for(int j = 0; j < Column + N - 1; j++){
+
+				Imagedata_Expassion[i][j][k] = Imagedata_Expassion[N - 1 - i][j][k];
+			}
+		}
+
+		for (int i = (N - 1)/2 + Row; i < N - 1 + Row; i++){
+			for(int j = 0; j < Column + N - 1; j++){
+
+				Imagedata_Expassion[i][j][k] = Imagedata_Expassion[N - 3 + 2 * Row - i][j][k];
+			}
+		}
+	}
+
+
+
+	cout << "Fill the expended row succeed!" <<endl;
+	
+	//prepare
+	double image_sum = 0.0;
+	for (int i = 0; i < Row + N - 1; i++){
+		for (int j = 0; j < Column + N - 1; j++){
+			Imagedata_Expassion[i][j][0] = Imagedata_Expassion[i][j][0]/255;
+//			image_sum += Imagedata_Expassion[i][j][0];
+		}
+	}
+//	double image_mean = image_sum / ((Row + N - 1) * (Column + N - 1));
+//	cout << "image_mean: " << image_mean << endl;
+	
+//	for (int i = 0; i < Row + N - 1; i++){
+//		for (int j = 0; j < Column + N - 1; j++){
+//			Imagedata_Expassion[i][j][0] = Imagedata_Expassion[i][j][0] - image_mean;
+//		}
+//	}
+	double Imagedata_Expassion_ill[Row + N - 1][Column + N - 1][BytesPerPixel];
+	
+	for(int i = 0; i <  Row + N - 1; i++){
+		for (int j = 0; j < Column + N - 1; j++){
+			double pixel_sum = 0;
+			int numofpixel = 0;
+			for(int k = max(i - 2,0); k <= min(i + 2, Row + N - 1 - 1); k++){
+				for(int l = max(j - 2,0); l <= min(j + 2, Column + N - 1 - 1); l++){
+					pixel_sum += Imagedata_Expassion[k][l][0];
+					numofpixel = numofpixel + 1;
+				}
+			}
+			if (numofpixel != 0){
+				double local_mean = pixel_sum / numofpixel;
+				Imagedata_Expassion_ill[i][j][0] = Imagedata_Expassion[i][j][0] - local_mean;
+			}
+
+			
+
+		}
+	}
+
+	
+	
+	//Law's filters
+	
+//	int L[5] = [ 1, 4,6, 4, 1];
+//	int E[5] = [-1,-2,0, 2, 1];
+//	int S[5] = [-1, 0,2, 0,-1];
+//	int W[5] = [-1, 2,0,-2, 1];
+//	int R[5] = [ 1,-4,6,-4, 1];
+	int current[5][5] = {0};
+
+//	double sum = {0.0};
+//	double square_sum[25] = {0.0};
+	int num = 0;
+	double mean;
+	int Laws[5][5] = {{ 1, 4,6, 4, 1},{-1,-2,0, 2, 1},{-1, 0,2, 0,-1},{-1, 2,0,-2, 1},{ 1,-4,6,-4, 1}};
+	for(int a = 0; a < N; a++){
+		for(int b = 0; b < N; b++){
+			for (int k = 0; k < N; k++){
+				for (int l = 0; l < N; l++){
+				current[k][l] = Laws[a][k] * Laws[b][l];
+				cout << current[k][l] << "\t";
+				}
+				cout << "\n";
+			}
+			cout << "\n";
+			for (int i = (N - 1)/2; i < Row + (N - 1)/2; i++){
+				for(int j = (N - 1)/2; j < Column + (N - 1)/2; j++){
+//					Imagedata_filted[i - (N - 1)/2][j - (N - 1)/2][0] = 0;
+					double temp = 0;
+					for (int m = 0; m < N; m++){
+						for(int n = 0; n < N; n++){
+							temp += Imagedata_Expassion_ill[i - (N - 1)/2 + m][j - (N - 1)/2 + n][0] * current[m][n];
+						}
+					}
+					Imagedata_filted[i - (N - 1)/2][j - (N - 1)/2][num] = temp;
+//					cout << i  - (N - 1)/2 << ", " << j - (N - 1)/2 << ": " << Imagedata_filted[i - (N - 1)/2][j - (N - 1)/2][num] <<endl;
+
+				}
+			}
+			// energy map
+			for (int i = 0; i < Row; i++){
+				for(int j = 0; j < Column; j++){
+					double square_sum = 0;
+					for(int k = max(i - M,0); k <= min(i + M, Row - 1); k++){
+						for(int l = max(j - M,0); l <= min(j + M, Column  - 1); l++){
+							square_sum += Imagedata_filted[k][l][num] * Imagedata_filted[k][l][num];
+						}
+					}
+					Imagedata_energy[i][j][num] = sqrt(square_sum / ((2*M+1)*(2*M+1)));
+				}
+			}
+
+
+
+//			cout << "square sum: " << square_sum[num]<<endl;
+//			cout << count <<endl;
+			num = num + 1;
+		}
+	}
+	
+//	//Normalize and sum
+//	double max_r = 0;
+//	double max_c = 0;
+//	double min_r = 20000;
+//	double min_c = 20000;
+//	int k = 6;
+//	
+//	for (int i = 0; i < Row; i++){
+//		for(int j = 0; j < Column; j++){
+//			if (max_r < Imagedata_filted[i][j][k]){
+//				max_r = Imagedata_filted[i][j][k];
+//			}
+//
+//
+//			if (min_r > Imagedata_filted[i][j][k]){
+//				min_r = Imagedata_filted[i][j][k];
+//			}
+//		}
+//	}
+//	
+//	cout << "max_r:" << max_r<<endl; 
+//	cout << "min_r:" << min_r<<endl; 
+//	
+//	
+//
+//
+//	unsigned char Imagedata_filted_output[Row][Column][1];
+//
+//	
+//	for (int i = 0; i < Row; i++){
+//		for(int j = 0;j < Column; j++){
+//			
+//			Imagedata_filted_output[i][j][0] = int((Imagedata_filted[i][j][k] - min_r)* 255.0 / (max_r - min_r));
+//			
+//
+//			
+//		}
+//		
+//	}
+
+
+	
+	// functions for output array to be plot
+	FILE *data_f = fopen("segmentation.txt", "w");
+	if (data_f == NULL)
+	{
+		printf("Error opening file!\n");
+		exit(1);
+	}
+	for (int f = 0;f < 25; f++) {
+		for(int i = 0; i < Row; i++){
+			for(int j = 0; j < Column; j++){
+				fprintf(data_f, "%f\t", Imagedata_energy[i][j][f]);
+			}
+			fprintf(data_f,"\n");
+		}
+		fprintf(data_f,"\n");
+	}
+	fclose(data_f);
+	
+
+//	// Write image data (filename specified by second argument) from image data matrix
+//
+//	if (!(file=fopen(argv[2],"wb"))) {
+//		cout << "Cannot open file: " << argv[5] << endl;
+//		exit(1);
+//	}
+//	fwrite(Imagedata_filted_output, sizeof(unsigned char), (Row)*(Column), file);
+//	fclose(file);
+
+	return 0;
+}
+
+%//(1) Name: Yifei Liu
+%//(2) USC ID Number: 3852294243 
+%//(3) USC Email: liu534@usc.edu
+%//(4) Submission Date: 3/19/2019
+
+% clear all
+% %% load data
+% X = load('segmentation.txt');
+% Y = reshape(X',[510,510,25]);
+% 
+% for i = 1:25
+%     Y(:,:,i) = Y(:,:,i)';
+% end
+% 
+% %% normalization
+% Y_norm = zeros(510,510,25);
+% for k = 1:25
+%     for i = 1:510
+%         for j = 1:510
+%             Y_norm(i,j,k) = Y(i,j,k) / Y(i,j,1);
+%         end
+%     end
+% end
+% 
+% %% k-means prepare data
+% num = 1;
+% for i = 1:510
+%     for j = 1:510
+%         feature = reshape(Y_norm(i,j,:),[1,25]);
+%         K(num,:) = [i j feature];
+%         num = num + 1;
+%     end
+% end
+
+%% PCA
+	%%% normalize
+	K_feature = K(:,3:27);
+	for i = 1:25
+		mu = mean(K_feature(:,i));
+		vars = max(K_feature(:,i)) - min(K_feature(:,i));
+		if vars == 0
+			vars = 1;
+		end
+		K_norm(:,i) = K_feature(:,i) - mu;
+		K_norm(:,i) = K_norm(:,i)./vars;
+	end
+
+	C = cov(K_norm);
+	%% svds
+	[U,D,V] = svds(C,7);
+	K_recover = K_norm * U(:,1:7);
+
+%% kmeans
+% initial = [K(2,3:27);K(127515,3:27);K(213725,3:27);K(215149,3:27);K(129765,3:27);K(20145,3:27);K(50980,3:27)];
+% [IDX, B] = kmeans(K(:,3:27), 7,'Start',initial, 'MaxIter',5000);
+% 
+initial = [K_recover(2,:);K_recover(127515,:);K_recover(213725,:);K_recover(215149,:);K_recover(129765,:);K_recover(20145,:);K_recover(50980,:)];
+[IDX, B] = kmeans(K_recover, 7,'Start',initial, 'MaxIter',5000);
+
+% initial = [K_norm(2,:);K_norm(127515,:);K_norm(213725,:);K_norm(215149,:);K_norm(129765,:);K_norm(20145,:);K_norm(50980,:)];
+% [IDX, B] = kmeans(K_norm, 7,'Start',initial, 'MaxIter',5000);
+
+
+
+
+
+%% put color in
+newimg = zeros(510,510);
+
+cor = K(find(IDX == 1),1:2);
+for i = 1: size(cor,1)
+	newimg(cor(i,1),cor(i,2)) = 0;
+end
+
+cor = K(find(IDX == 2),1:2);
+for i = 1: size(cor,1)
+	newimg(cor(i,1),cor(i,2)) = 42;
+end
+
+cor = K(find(IDX == 3),1:2);
+for i = 1: size(cor,1)
+	newimg(cor(i,1),cor(i,2)) = 84;
+end
+
+cor = K(find(IDX == 4),1:2);
+for i = 1: size(cor,1)
+	newimg(cor(i,1),cor(i,2)) = 126;
+end
+
+cor = K(find(IDX == 5),1:2);
+for i = 1: size(cor,1)
+	newimg(cor(i,1),cor(i,2)) = 168;
+end
+
+cor = K(find(IDX == 6),1:2);
+for i = 1: size(cor,1)
+	newimg(cor(i,1),cor(i,2)) = 210;
+end
+
+cor = K(find(IDX == 7),1:2);
+for i = 1: size(cor,1)
+	newimg(cor(i,1),cor(i,2)) = 255;
+end
+
+% newimg(K(find(IDX == 1),1:2)) = 0;
+% 
+% newimg(K(find(IDX == 2),1:2)) = 42;
+% 
+% newimg(K(find(IDX == 3),1:2)) = 84;
+%     
+% newimg(K(find(IDX == 4),1:2)) = 126;
+%    
+% newimg(K(find(IDX == 5),1),K(find(IDX == 5),2)) = 168;
+% 
+% newimg(K(find(IDX == 6),1:2)) = 210;
+% 
+% newimg(K(find(IDX == 7),1:2)) = 255;
+
+
+imwrite(uint8(newimg),"texture_seg_pca_15.png")
+
+
+
+#//(1) Name: Yifei Liu
+#//(2) USC ID Number: 3852294243 
+#//(3) USC Email: liu534@usc.edu
+#//(4) Submission Date: 3/19/2019
+
+import glob
+import numpy as np
+import imageio
+import matplotlib.pyplot as plt
+from mpl_toolkits import mplot3d
+import cv2
+from sklearn.cluster import KMeans
+from scipy.spatial import distance
+import math
+
+def read_raw(img_path):
+	img = np.fromfile(img_path, dtype=np.uint8)
+	img.shape = (28,28)
+	return img
+
+def Image_to_cartesian(img,i,j):
+	index = np.array([[i+1],[j+1],[1]])
+	cartesian = np.zeros((3,1))
+	mtx = np.array([[0,1,-0.5],[-1,0,img.shape[0]+0.5],[0,0,1]])
+	cartesian = mtx @ index
+	
+#	print(cartesian)
+	return cartesian
+
+def cartesian_to_Image(img,cartesian):
+	idx = np.zeros((3,1))
+	mtx = np.array([[0,-1,img.shape[0]+0.5],[1,0,0.5],[0,0,1]])
+	idx = mtx @ cartesian - [[1],[1],[0]]
+	
+	if idx[0] > img.shape[0] - 1:
+		idx[0] = img.shape[0] - 1
+	elif idx[0] < 0:
+		idx[0] = 0
+		
+	if idx[1] > img.shape[1] - 1:
+		idx[1] = img.shape[1] - 1
+	elif idx[1] < 0:
+		idx[1] = 0
+		
+#	print("idx:\n",idx)
+	return idx
+	
+
+def SIFT(img):
+	sift = cv2.xfeatures2d.SIFT_create()
+	key_point = sift.detect(img,None)
+	key_point, des = sift.compute(img,key_point)
+	return key_point, des	
+
+
+	
+def circle_point(idx,img,color,angle):
+	x = math.floor(idx[0])
+	y = math.floor(idx[1])
+	
+#	x_ = math.floor(x+3*math.cos(angle))
+#	y_ = math.floor(y+3*math.sin(angle))
+	
+#	img[x,y] = color
+	cv2.circle(img, (x,y), 0, color,-1)
+#	cv2.arrowedLine(img, (x,y), (x_,y_), color, 1)
+	
+
+def K_means(training_set):
+	kmeans = KMeans(n_clusters = 2, random_state = 0).fit(training_set)
+	return kmeans
+	
+def plot_key_point(img, idx, angle, filename, predict_label):
+	if predict_label == 0:
+		color = (167, 47, 0)
+	elif predict_label == 1:
+		color = (255, 0, 255)
+
+	circle_point(idx,img,color,angle)
+	cv2.imwrite(filename,img)
+		
+		
+		
+if __name__ == "__main__":	
+	
+	#load image
+	
+	# "0"
+	img_0 = []
+	for filename in glob.glob('zero_*.raw'):
+		print('reading ', filename)
+		img_0.append(read_raw(filename))
+	
+	num_of_0 = np.shape(img_0)[0]
+	print("Total number of 0 is : ", num_of_0)
+	
+	# "1"
+	img_1 = []
+	for filename in glob.glob('one_*.raw'):
+		print('reading ', filename)
+		img_1.append(read_raw(filename))
+	
+	num_of_1 = np.shape(img_1)[0]
+	print("Total number of 1 is : ", num_of_1)
+
+	
+	
+	# collect SIFT feature
+	training_set = []
+	for i in range(num_of_0):
+		key_point_0, des_0 = SIFT(img_0[i])
+		print("number of key point in 0: ", len(key_point_0))
+		for j in range(np.shape(des_0)[0]):
+			training_set.append(des_0[j,:])
+	
+	for i in range(num_of_1):
+		key_point_1, des_1 = SIFT(img_1[i])
+		print("number of key point in 1: ",len(key_point_1))
+		if len(key_point_1) != 0:
+			for j in range(np.shape(des_1)[0]):
+				training_set.append(des_1[j,:])
+			
+	print(len(training_set))
+	
+	# train cluster
+	kmeans = K_means(training_set)
+	print(kmeans.labels_)
+	
+	
+	#load test image and extract SIFT
+	img_test = read_raw("eight.raw")
+#	print(img_test)
+	key_point, des = SIFT(img_test)
+	print("number of key point: ", len(key_point))
+	for i in range(len(key_point)):
+		print("The index of key-point is: ",key_point[i].pt)
+		print("The orientation of key-point is: ",key_point[i].angle)
+	label = kmeans.predict(des)
+	print(label)
+	
+	
+	color_img = cv2.cvtColor(img_test, cv2.COLOR_GRAY2RGB)
+	for index, label_ in enumerate(label):
+		plot_key_point(color_img, key_point[index].pt, key_point[index].angle, "eight_kp.jpg", label_)
+
+			
+
+	
+#	print(label)
+		

@@ -1,0 +1,88 @@
+# EE569 Homework Assignment #1
+# Date:January 22nd, 2019
+# Name:Yifei Liu
+# ID:3852-2942-43
+# email:liu534@usc.edu
+# Compiled on MAC OS with g++
+# Define compiler and linker
+
+CC=g++
+LN=g++
+All : prob1 prob2
+prob1:
+	@echo "Problem 1: Edge Detection(50%)"
+	@echo "(a) SobelEdge Detecto(10%)"
+	@echo "compiling and linking the code"
+	$(CC) -c sobeledge.cpp
+	$(LN) -o main sobeledge.cpp
+	@echo "running the program, usage: solution inputImageName outputImageName"
+	./main tiger.raw tiger_output.raw 1 321 481
+	./main pig.raw pig_output.raw 1 321 481
+	
+	@echo "(b)Canny Edge Detecto(20%)"
+	@echo "It's MATLAB Toolbox"
+
+				
+	@echo "(c)Structured Edge(20%)"
+	@echo "It's MATLAB Toolbox"
+
+	@echo "(d) Performance Evaluatio(15%)"
+	@echo "It's MATLAB Toolbox"
+
+	
+		
+prob2:
+	@echo "Problem 2: Digital Half-toning(50%)"
+	@echo "(a)Dithering(15%)"
+	@echo "Random Dithering"
+	@echo "compiling and linking the code"
+	$(CC) -c Dithering_random.cpp
+	$(LN) -o main Dithering_random.cpp
+	@echo "running the program, result: output image dithering by adding random noise"
+	./main bridge.raw bridge_random.raw 1 400 600
+	
+	@echo "Dithering Matrix"
+	@echo "compiling and linking the code"
+	$(CC) -c Dithering_matrix.cpp
+	$(LN) -o main Dithering_matrix.cpp
+	@echo "running the program, result: output image dithering by dithering matrix I_2, I_8 and I_32"
+	./main bridge.raw bridge_matrix.raw 1 400 600
+								
+	
+	@echo "(b)Error Diffusion (15%)"
+	@echo "Floyd-Steinber diffusion"
+	@echo "compiling and linking the code"
+	$(CC) -c Err_Diff_Floyd.cpp
+	$(LN) -o main Err_Diff_Floyd.cpp
+	@echo "running the program, result: output image dithering by F-S error diffusion"
+	./main bridge.raw bridge_FS.raw 1 400 600
+	
+	@echo "JJN diffusion"
+	@echo "compiling and linking the code"
+	@echo "running the program, result: output image dithering by JJN error diffusion"
+	$(CC) -c Err_Diff_Jarvis.cpp
+	$(LN) -o main Err_Diff_Jarvis.cpp
+	./main bridge.raw bridge_JJN.raw 1 400 600
+	
+	@echo "Stucki diffusion"
+	@echo "compiling and linking the code"
+	@echo "running the program, result: output image dithering by Stucki error diffusion"
+	$(CC) -c Err_Diff_Stucki.cpp
+	$(LN) -o main Err_Diff_Stucki.cpp
+	./main bridge.raw Err_Diff_Stucki.raw 1 400 600
+	
+	@echo "(c) Color Halftoning with Error Diffusion(20%)"
+	@echo "Separable Error Diffusion"
+	@echo "compiling and linking the code"
+	$(CC) -c separable_Err_Diff_1.cpp
+	$(LN) -o main separable_Err_Diff_1.cpp
+	@echo "running the program, result: output color image dithering by F-S error diffusion separately"
+	./main bird.raw bird_separable_Err_Diff.raw 3 375 500
+	
+	@echo "MBVQ Diffusion"
+	@echo "compiling and linking the code"
+	$(CC) -c MBVQ_Err_Diff.cpp
+	$(LN) -o main MBVQ_Err_Diff.cpp
+	@echo "running the program, result: output color image dithering by F-S error diffusion separately"
+	./main bird.raw bird_MBVQ_Err_Diff_Jarvis.raw 3 375 500
+	

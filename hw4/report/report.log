@@ -1,0 +1,562 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.1.19)  19 MAR 2019 23:45
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**report.tex -file-line-error
+(./report.tex
+LaTeX2e <2018-04-01> patch level 2
+Babel <3.18> and hyphenation patterns for 22 language(s) loaded.
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2017/09/02 v2.17a AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks14
+\ex@=\dimen103
+))
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen104
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count88
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count89
+\leftroot@=\count90
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count91
+\DOTSCASE@=\count92
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count93
+\c@MaxMatrixCols=\count94
+\dotsspace@=\muskip11
+\c@parentequation=\count95
+\dspbrk@lvl=\count96
+\tag@help=\toks15
+\row@=\count97
+\column@=\count98
+\maxfields@=\count99
+\andhelp@=\toks16
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks17
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks18
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/tools/bm.sty
+Package: bm 2017/01/16 v1.2c Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup6
+\symboldletters=\mathgroup7
+\symboldsymbols=\mathgroup8
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 141.
+LaTeX Info: Redefining \bm on input line 207.
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks19
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen112
+\Gin@req@width=\dimen113
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/tools/enumerate.sty
+Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
+\@enLab=\toks20
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/subfig/subfig.sty
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+\captionmargin=\dimen114
+\captionmargin@=\dimen115
+\captionwidth=\dimen116
+\caption@tempdima=\dimen117
+\caption@indent=\dimen118
+\caption@parindent=\dimen119
+\caption@hangindent=\dimen120
+)
+\c@ContinuedFloat=\count100
+)
+\c@KVtest=\count101
+\sf@farskip=\skip46
+\sf@captopadj=\dimen121
+\sf@capskip=\skip47
+\sf@nearskip=\skip48
+\c@subfigure=\count102
+\c@subfigure@save=\count103
+\c@lofdepth=\count104
+\c@subtable=\count105
+\c@subtable@save=\count106
+\c@lotdepth=\count107
+\sf@top=\skip49
+\sf@bottom=\skip50
+)
+\c@definition=\count108
+\c@remark=\count109
+\c@properties=\count110
+\c@example=\count111
+\c@theorem=\count112
+\c@observation=\count113
+\toppush=\skip51
+
+(./report.aux
+
+LaTeX Warning: Label `histo_0' multiply defined.
+
+)
+\openout1 = `report.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+ (/usr/local/texlive/2018basic/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count114
+\scratchdimen=\dimen122
+\scratchbox=\box28
+\nofMPsegments=\count115
+\nofMParguments=\count116
+\everyMPshowfont=\toks21
+\MPscratchCnt=\count117
+\MPscratchDim=\dimen123
+\MPnumerator=\count118
+\makeMPintoPDFobject=\count119
+\everyMPtoPDFconversion=\toks22
+) (/usr/local/texlive/2018basic/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)))
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2018/01/30 v0.27 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Try loading font information for U+msa on input line 65.
+ (/usr/local/texlive/2018basic/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 65.
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Underfull \hbox (badness 10000) in paragraph at lines 65--65
+
+ []
+
+[1
+
+{/usr/local/texlive/2018basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+[2]
+Overfull \hbox (13.92657pt too wide) in paragraph at lines 151--169
+[][]
+ []
+
+<pca_3d.png, id=19, 1124.2pt x 843.15pt>
+File: pca_3d.png Graphic file (type png)
+<use pca_3d.png>
+Package pdftex.def Info: pca_3d.png  used on input line 174.
+(pdftex.def)             Requested size: 337.2626pt x 252.94695pt.
+
+Overfull \hbox (13.93549pt too wide) in paragraph at lines 191--197
+ [][] 
+ []
+
+[3] [4 <./pca_3d.png (PNG copy)>]
+<Imagedata_filted_L5L5.png, id=27, 511.9125pt x 511.9125pt>
+File: Imagedata_filted_L5L5.png Graphic file (type png)
+<use Imagedata_filted_L5L5.png>
+Package pdftex.def Info: Imagedata_filted_L5L5.png  used on input line 223.
+(pdftex.def)             Requested size: 102.38068pt x 102.38068pt.
+<Imagedata_filted_L5E5.png, id=28, 511.9125pt x 511.9125pt>
+File: Imagedata_filted_L5E5.png Graphic file (type png)
+<use Imagedata_filted_L5E5.png>
+Package pdftex.def Info: Imagedata_filted_L5E5.png  used on input line 229.
+(pdftex.def)             Requested size: 102.38068pt x 102.38068pt.
+<Imagedata_filted_L5R5.png, id=29, 511.9125pt x 511.9125pt>
+File: Imagedata_filted_L5R5.png Graphic file (type png)
+<use Imagedata_filted_L5R5.png>
+Package pdftex.def Info: Imagedata_filted_L5R5.png  used on input line 235.
+(pdftex.def)             Requested size: 102.38068pt x 102.38068pt.
+<Imagedata_filted_L5S5.png, id=30, 511.9125pt x 511.9125pt>
+File: Imagedata_filted_L5S5.png Graphic file (type png)
+<use Imagedata_filted_L5S5.png>
+Package pdftex.def Info: Imagedata_filted_L5S5.png  used on input line 241.
+(pdftex.def)             Requested size: 102.38068pt x 102.38068pt.
+<Imagedata_filted_L5W5.png, id=31, 511.9125pt x 511.9125pt>
+File: Imagedata_filted_L5W5.png Graphic file (type png)
+<use Imagedata_filted_L5W5.png>
+Package pdftex.def Info: Imagedata_filted_L5W5.png  used on input line 247.
+(pdftex.def)             Requested size: 102.38068pt x 102.38068pt.
+<Imagedata_filted_E5L5.png, id=32, 511.9125pt x 511.9125pt>
+File: Imagedata_filted_E5L5.png Graphic file (type png)
+<use Imagedata_filted_E5L5.png>
+Package pdftex.def Info: Imagedata_filted_E5L5.png  used on input line 253.
+(pdftex.def)             Requested size: 102.38068pt x 102.38068pt.
+<Imagedata_filted_E5E5.png, id=33, 511.9125pt x 511.9125pt>
+File: Imagedata_filted_E5E5.png Graphic file (type png)
+<use Imagedata_filted_E5E5.png>
+Package pdftex.def Info: Imagedata_filted_E5E5.png  used on input line 259.
+(pdftex.def)             Requested size: 102.38068pt x 102.38068pt.
+<texture_seg_15.png, id=34, 511.9125pt x 511.9125pt>
+File: texture_seg_15.png Graphic file (type png)
+<use texture_seg_15.png>
+Package pdftex.def Info: texture_seg_15.png  used on input line 281.
+(pdftex.def)             Requested size: 204.76137pt x 204.76137pt.
+ [5 <./Imagedata_filted_L5L5.png (PNG copy)> <./Imagedata_filted_L5E5.png (PNG 
+copy)> <./Imagedata_filted_L5R5.png (PNG copy)> <./Imagedata_filted_L5S5.png (P
+NG copy)> <./Imagedata_filted_L5W5.png (PNG copy)> <./Imagedata_filted_E5L5.png
+ (PNG copy)> <./Imagedata_filted_E5E5.png (PNG copy)>]
+<texture_seg_7.png, id=39, 511.9125pt x 511.9125pt>
+File: texture_seg_7.png Graphic file (type png)
+<use texture_seg_7.png>
+Package pdftex.def Info: texture_seg_7.png  used on input line 289.
+(pdftex.def)             Requested size: 204.76137pt x 204.76137pt.
+<texture_seg_17.png, id=40, 511.9125pt x 511.9125pt>
+File: texture_seg_17.png Graphic file (type png)
+<use texture_seg_17.png>
+Package pdftex.def Info: texture_seg_17.png  used on input line 296.
+(pdftex.def)             Requested size: 204.76137pt x 204.76137pt.
+<texture_seg_41.png, id=41, 511.9125pt x 511.9125pt>
+File: texture_seg_41.png Graphic file (type png)
+<use texture_seg_41.png>
+Package pdftex.def Info: texture_seg_41.png  used on input line 303.
+(pdftex.def)             Requested size: 204.76137pt x 204.76137pt.
+ [6 <./texture_seg_15.png (PNG copy)> <./texture_seg_7.png (PNG copy)>] [7 <./t
+exture_seg_17.png (PNG copy)> <./texture_seg_41.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 321--322
+
+ []
+
+<texture_seg_pca_3.png, id=49, 511.9125pt x 511.9125pt>
+File: texture_seg_pca_3.png Graphic file (type png)
+<use texture_seg_pca_3.png>
+Package pdftex.def Info: texture_seg_pca_3.png  used on input line 330.
+(pdftex.def)             Requested size: 204.76137pt x 204.76137pt.
+<texture_seg_pca_7.png, id=50, 511.9125pt x 511.9125pt>
+File: texture_seg_pca_7.png Graphic file (type png)
+<use texture_seg_pca_7.png>
+Package pdftex.def Info: texture_seg_pca_7.png  used on input line 337.
+(pdftex.def)             Requested size: 204.76137pt x 204.76137pt.
+<texture_seg_pca_15.png, id=51, 511.9125pt x 511.9125pt>
+File: texture_seg_pca_15.png Graphic file (type png)
+<use texture_seg_pca_15.png>
+Package pdftex.def Info: texture_seg_pca_15.png  used on input line 344.
+(pdftex.def)             Requested size: 204.76137pt x 204.76137pt.
+<enhance_seg_medfilt2.png, id=52, 511.9125pt x 511.9125pt>
+File: enhance_seg_medfilt2.png Graphic file (type png)
+<use enhance_seg_medfilt2.png>
+Package pdftex.def Info: enhance_seg_medfilt2.png  used on input line 353.
+(pdftex.def)             Requested size: 204.76137pt x 204.76137pt.
+[8] [9 <./texture_seg_pca_3.png (PNG copy)> <./texture_seg_pca_7.png (PNG copy)
+>] [10 <./texture_seg_pca_15.png (PNG copy)> <./enhance_seg_medfilt2.png (PNG c
+opy)>] [11]
+<numofkey.png, id=67, 559.08875pt x 50.1875pt>
+File: numofkey.png Graphic file (type png)
+<use numofkey.png>
+Package pdftex.def Info: numofkey.png  used on input line 448.
+(pdftex.def)             Requested size: 223.63153pt x 20.07463pt.
+ [12]
+<largestscalekp.png, id=72, 1039.885pt x 75.28125pt>
+File: largestscalekp.png Graphic file (type png)
+<use largestscalekp.png>
+Package pdftex.def Info: largestscalekp.png  used on input line 456.
+(pdftex.def)             Requested size: 415.94662pt x 30.11195pt.
+<river1_largest.png, id=73, 770.88pt x 1027.84pt>
+File: river1_largest.png Graphic file (type png)
+<use river1_largest.png>
+Package pdftex.def Info: river1_largest.png  used on input line 463.
+(pdftex.def)             Requested size: 154.17326pt x 205.56436pt.
+ [13 <./numofkey.png> <./largestscalekp.png> <./river1_largest.png (PNG copy)>]
+<matching_river.png, id=81, 1541.76pt x 1027.84pt>
+File: matching_river.png Graphic file (type png)
+<use matching_river.png>
+Package pdftex.def Info: matching_river.png  used on input line 484.
+(pdftex.def)             Requested size: 308.34654pt x 205.56436pt.
+<1nn_river2.png, id=82, 770.88pt x 1027.84pt>
+File: 1nn_river2.png Graphic file (type png)
+<use 1nn_river2.png>
+Package pdftex.def Info: 1nn_river2.png  used on input line 492.
+(pdftex.def)             Requested size: 154.17326pt x 205.56436pt.
+<1nnpara.png, id=83, 1044.90375pt x 83.31125pt>
+File: 1nnpara.png Graphic file (type png)
+<use 1nnpara.png>
+Package pdftex.def Info: 1nnpara.png  used on input line 499.
+(pdftex.def)             Requested size: 313.47354pt x 24.99356pt.
+<2nn_river2.png, id=84, 770.88pt x 1027.84pt>
+File: 2nn_river2.png Graphic file (type png)
+<use 2nn_river2.png>
+Package pdftex.def Info: 2nn_river2.png  used on input line 507.
+(pdftex.def)             Requested size: 154.17326pt x 205.56436pt.
+<2nnpara.png, id=85, 1055.945pt x 128.48pt>
+File: 2nnpara.png Graphic file (type png)
+<use 2nnpara.png>
+Package pdftex.def Info: 2nnpara.png  used on input line 514.
+(pdftex.def)             Requested size: 316.78595pt x 38.54428pt.
+<3nn_river2.png, id=86, 770.88pt x 1027.84pt>
+File: 3nn_river2.png Graphic file (type png)
+<use 3nn_river2.png>
+Package pdftex.def Info: 3nn_river2.png  used on input line 522.
+(pdftex.def)             Requested size: 154.17326pt x 205.56436pt.
+<3nnpara.png, id=87, 1046.91125pt x 199.74625pt>
+File: 3nnpara.png Graphic file (type png)
+<use 3nnpara.png>
+Package pdftex.def Info: 3nnpara.png  used on input line 529.
+(pdftex.def)             Requested size: 314.0758pt x 59.92433pt.
+ [14 <./matching_river.png (PNG copy)>] [15 <./1nn_river2.png (PNG copy)> <./1n
+npara.png> <./2nn_river2.png (PNG copy)> <./2nnpara.png>]
+[16 <./3nn_river2.png (PNG copy)> <./3nnpara.png>]
+<trainset.png, id=100, 323.2075pt x 251.94125pt>
+File: trainset.png Graphic file (type png)
+<use trainset.png>
+Package pdftex.def Info: trainset.png  used on input line 551.
+(pdftex.def)             Requested size: 129.2807pt x 100.7747pt.
+<zero_1_kp.png, id=101, 28.105pt x 28.105pt>
+File: zero_1_kp.png Graphic file (type png)
+<use zero_1_kp.png>
+Package pdftex.def Info: zero_1_kp.png  used on input line 566.
+(pdftex.def)             Requested size: 56.20984pt x 56.20984pt.
+<zero_2_kp.png, id=102, 28.105pt x 28.105pt>
+File: zero_2_kp.png Graphic file (type png)
+<use zero_2_kp.png>
+Package pdftex.def Info: zero_2_kp.png  used on input line 572.
+(pdftex.def)             Requested size: 56.20984pt x 56.20984pt.
+<zero_3_kp.png, id=103, 28.105pt x 28.105pt>
+File: zero_3_kp.png Graphic file (type png)
+<use zero_3_kp.png>
+Package pdftex.def Info: zero_3_kp.png  used on input line 578.
+(pdftex.def)             Requested size: 56.20984pt x 56.20984pt.
+<zero_4_kp.png, id=104, 28.105pt x 28.105pt>
+File: zero_4_kp.png Graphic file (type png)
+<use zero_4_kp.png>
+Package pdftex.def Info: zero_4_kp.png  used on input line 584.
+(pdftex.def)             Requested size: 56.20984pt x 56.20984pt.
+<zero_5_kp.png, id=105, 28.105pt x 28.105pt>
+File: zero_5_kp.png Graphic file (type png)
+<use zero_5_kp.png>
+Package pdftex.def Info: zero_5_kp.png  used on input line 590.
+(pdftex.def)             Requested size: 56.20984pt x 56.20984pt.
+<one_1_kp.png, id=106, 28.105pt x 28.105pt>
+File: one_1_kp.png Graphic file (type png)
+<use one_1_kp.png>
+Package pdftex.def Info: one_1_kp.png  used on input line 603.
+(pdftex.def)             Requested size: 56.20984pt x 56.20984pt.
+<one_2_kp.png, id=107, 28.105pt x 28.105pt>
+File: one_2_kp.png Graphic file (type png)
+<use one_2_kp.png>
+Package pdftex.def Info: one_2_kp.png  used on input line 609.
+(pdftex.def)             Requested size: 56.20984pt x 56.20984pt.
+<one_3_kp.png, id=108, 28.105pt x 28.105pt>
+File: one_3_kp.png Graphic file (type png)
+<use one_3_kp.png>
+Package pdftex.def Info: one_3_kp.png  used on input line 615.
+(pdftex.def)             Requested size: 56.20984pt x 56.20984pt.
+<one_4_kp.png, id=109, 28.105pt x 28.105pt>
+File: one_4_kp.png Graphic file (type png)
+<use one_4_kp.png>
+Package pdftex.def Info: one_4_kp.png  used on input line 621.
+(pdftex.def)             Requested size: 56.20984pt x 56.20984pt.
+ [17 <./trainset.png> <./zero_1_kp.png (PNG copy)> <./zero_2_kp.png (PNG copy)>
+ <./zero_3_kp.png (PNG copy)> <./zero_4_kp.png (PNG copy)> <./zero_5_kp.png (PN
+G copy)>]
+
+LaTeX Warning: Reference `histo_1' on page 18 undefined on input line 640.
+
+<eight_kp.png, id=114, 28.105pt x 28.105pt>
+File: eight_kp.png Graphic file (type png)
+<use eight_kp.png>
+Package pdftex.def Info: eight_kp.png  used on input line 643.
+(pdftex.def)             Requested size: 140.5246pt x 140.5246pt.
+<histogram_bow.jpg, id=115, 1124.2pt x 843.15pt>
+File: histogram_bow.jpg Graphic file (type jpg)
+<use histogram_bow.jpg>
+Package pdftex.def Info: histogram_bow.jpg  used on input line 649.
+(pdftex.def)             Requested size: 337.2626pt x 252.94695pt.
+<histo_0.jpg, id=116, 1124.2pt x 843.15pt>
+File: histo_0.jpg Graphic file (type jpg)
+<use histo_0.jpg>
+Package pdftex.def Info: histo_0.jpg  used on input line 656.
+(pdftex.def)             Requested size: 337.2626pt x 252.94695pt.
+<histo_1.jpg, id=117, 1124.2pt x 843.15pt>
+File: histo_1.jpg Graphic file (type jpg)
+<use histo_1.jpg>
+Package pdftex.def Info: histo_1.jpg  used on input line 663.
+(pdftex.def)             Requested size: 337.2626pt x 252.94695pt.
+<paraofeight.png, id=118, 748.7975pt x 605.26125pt>
+File: paraofeight.png Graphic file (type png)
+<use paraofeight.png>
+Package pdftex.def Info: paraofeight.png  used on input line 697.
+(pdftex.def)             Requested size: 224.64098pt x 181.57976pt.
+[18 <./one_1_kp.png (PNG copy)> <./one_2_kp.png (PNG copy)> <./one_3_kp.png (PN
+G copy)> <./one_4_kp.png (PNG copy)> <./eight_kp.png (PNG copy)>] [19 <./histog
+ram_bow.jpg> <./histo_0.jpg>] [20 <./histo_1.jpg>] [21 <./paraofeight.png>]
+(./report.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 4007 strings out of 494091
+ 60312 string characters out of 6163523
+ 142391 words of memory out of 5000000
+ 7586 multiletter control sequences out of 15000+600000
+ 12913 words of font info for 47 fonts, out of 8000000 for 9000
+ 319 hyphenation exceptions out of 8191
+ 44i,9n,49p,634b,434s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
+0.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mbx12.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmex10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmmi10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmmi8.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018basic/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2018basic/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018basic/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2018basic/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018basic/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018basic/
+texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on report.pdf (21 pages, 14270662 bytes).
+PDF statistics:
+ 181 PDF objects out of 1000 (max. 8388607)
+ 94 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 206 words of extra memory for PDF output out of 10000 (max. 10000000)
+

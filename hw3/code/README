@@ -1,0 +1,56 @@
+# EE569 Homework Assignment #1
+# Date:January 22nd, 2019
+# Name:Yifei Liu
+# ID:3852-2942-43
+# email:liu534@usc.edu
+# Compiled on MAC OS with g++
+# Define compiler and linker
+
+CC=g++
+LN=g++
+All : prob2
+prob2:
+	@echo "Problem 2: Morphological Processing(50%)"
+	@echo "(a)Basic Morphological Process Implementation (20%)"
+	@echo "compiling and linking the code"
+	$(CC) -c shrinking.cpp
+	$(LN) -o main shrinking.cpp
+	@echo "running the program, result: shrinking image"
+	./main pattern1.raw pattern1_s.raw 1 375 375
+	./main pattern2.raw pattern2_s.raw 1 375 375
+	./main pattern3.raw pattern3_s.raw 1 375 375
+	./main pattern4.raw pattern4_s.raw 1 375 375
+	$(CC) -c thinning.cpp
+	$(LN) -o main thinning.cpp
+	@echo "running the program, result: thinning image"
+	./main pattern1.raw pattern1_t.raw 1 375 375
+	./main pattern2.raw pattern2_t.raw 1 375 375
+	./main pattern3.raw pattern3_t.raw 1 375 375
+	./main pattern4.raw pattern4_t.raw 1 375 375
+	$(CC) -c skeletoning.cpp
+	$(LN) -o main skeletoning.cpp
+	@echo "running the program, result: skeletoning image"
+	./main pattern1.raw pattern1_k.raw 1 375 375
+	./main pattern2.raw pattern2_k.raw 1 375 375
+	./main pattern3.raw pattern3_k.raw 1 375 375
+	./main pattern4.raw pattern4_k.raw 1 375 375
+
+	
+
+	
+	@echo "(b)Defect Detection and Correction(20%)"
+	@echo "Detect the defect region in the deer.raw"
+	@echo "compiling and linking the code"
+	$(CC) -c defectless.cpp
+	$(LN) -o main defectless.cpp
+	@echo "running the program, result: defectless image"
+	./main deer.raw deer_shrink_black.raw 1 691 550
+
+	
+	@echo "(c)Object Analysis (20%)"
+	@echo "compiling and linking the code"
+	$(CC) -c count.cpp
+	$(LN) -o main count.cpp
+	@echo "running the program, result: number of rice"
+	./main rice.raw rice_count.raw 3 500 690
+	

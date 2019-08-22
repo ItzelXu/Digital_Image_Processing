@@ -1,0 +1,86 @@
+# EE569 Homework Assignment #1
+# Date:January 22nd, 2019
+# Name:Yifei Liu
+# ID:3852-2942-43
+# email:liu534@usc.edu
+# Compiled on MAC OS with g++
+# Define compiler and linker
+
+CC=g++
+LN=g++
+All : prob1 prob2
+prob1:
+	@echo "Problem 1: Image Demosaicing and Histogram Manipulation(50%)"
+	@echo "(a)Bilinear Demosaicing(10%)"
+	@echo "compiling and linking the code"
+	$(CC) -c demosaicing.cpp
+	$(LN) -o main demosaicing.cpp
+	@echo "running the program, usage: solution inputImageName outputImageName"
+	./main cat.raw cat_demosaicing.raw 1 300 390
+	
+	@echo "(b)MHC demosaicing(20%)"
+	@echo "compiling and linking the code"
+	$(CC) -c MHC_demosaicing.cpp
+	$(LN) -o main MHC_demosaicing.cpp
+	@echo "running the program, usage: solution inputImageName outputImageName"
+	./main cat.raw cat_MHC.raw 1 300 390	
+				
+	@echo "(c)Histogram Manipulation(20%)"
+	@echo "compiling and linking the code"
+	$(CC) -c Histogram_Manipulation_A.cpp
+	$(LN) -o main Histogram_Manipulation_A.cpp
+	@echo "running the program, result:rose_dark.raw manipulated by method A"
+	./main rose_dark.raw rose_dark_A.raw 1 400 400
+	@echo "running the program, result:rose_bright.raw manipulated by method A"
+	./main rose_bright.raw rose_bright_A.raw 1 400 400
+	
+	@echo "compiling and linking the code"
+	$(CC) -c Histogram_Manipulation_B.cpp
+	$(LN) -o main Histogram_Manipulation_B.cpp
+	@echo "running the program, result:rose_dark.raw manipulated by method B"
+	./main rose_dark.raw rose_dark_B.raw 1 400 400
+	@echo "running the program, result:rose_bright.raw manipulated by method B"
+	./main rose_bright.raw rose_bright_B.raw 1 400 400
+		
+prob2:
+	@echo "Problem 2: Image Demosaicing and Histogram Manipulation(50%)"
+	@echo "(a)Gray-level Image(10%)"
+	@echo "compiling and linking the code"
+	$(CC) -c denoising_gray_image.cpp
+	$(LN) -o main denoising_gray_image.cpp
+	@echo "running the program, result: output image filtering by uniform filter and gaussian filter"
+	./main pepper_uni.raw pepper.raw pepper_denoised_uni.raw pepper_denoised_gau.raw 1 256 256
+	
+	@echo "Bilateral Filter"
+	@echo "compiling and linking the code"
+	$(CC) -c bilateral.cpp
+	$(LN) -o main bilateral.cpp
+	@echo "running the program, result: output image filtering by uniform filter and bilateral filter"
+	./main pepper_uni.raw pepper.raw pepper_bilateral.raw 1 256 256
+								
+	@echo "Non-local mean Filter"
+	@echo "compiling and linking the code"
+	$(CC) -c nl_mean.cpp
+	$(LN) -o main nl_mean.cpp
+	@echo "running the program, result: output image filtering by uniform filter and bilateral filter"
+	./main pepper_uni.raw pepper.raw pepper_nl_mean.raw 1 256 256
+	
+	@echo "(b)color Image(20%)"
+	@echo "combination of bilateral Filter and median filter"
+	@echo "compiling and linking the code"
+	$(CC) -c bilateral.cpp
+	$(LN) -o main bilateral.cpp
+	@echo "running the program, result: output image filtering by median filter"
+	./main rose_color_noise.raw rose_color.raw rose_color_bilateral.raw 3 256 256
+	@echo "running the program, result: output image filtering by median filter"
+	$(CC) -c main median.cpp
+	$(LN) -o main median.cpp
+	./main rose_color_bilateral.raw rose_color.raw rose_color_median.raw 3 256 256
+	
+	@echo "(c)shot noise(20%)"
+	@echo "compiling and linking the code"
+	$(CC) -c shot_noise.cpp
+	$(LN) -o main shot_noise.cpp
+	@echo "running the program, result: output image filtering by gaussian filter"
+	./main pepper_dark_noise.raw pepper_dark.raw pepper_dark_denoised_biased.raw pepper_dark_denoised_unbiased.raw 1 256 256
+	
